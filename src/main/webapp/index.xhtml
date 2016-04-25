@@ -12,13 +12,14 @@
 	<title>Welcome to Modul Perwalian</title>
 </h:head>
 <h:body>
-    <b:container fluid="false">
+    <p:panel style="margin: auto; margin-top: 15%; width: 30%;">
+        <h:form>
 		<b:row>
-                    <b:column colMd="2">
-				<h:outputText value="Username :" />
+                    <b:column>
+			<h:outputText value="Username :" />
                     </b:column>
-                    <b:column colMd="4">
-				<b:inputText placeholder="Username" />
+                    <b:column>
+			<b:inputText placeholder="Username" />
 			</b:column>
                     <b:column colMd="6">
 		    </b:column>
@@ -32,15 +33,17 @@
 		    </b:column>
 		    <b:column colMd="6">
 		    </b:column>
-		  </b:row>
-		  <b:row>
-                      <b:column span="2" offset="2" colMd="2">
-		      <b:commandButton value="login" look="primary" style="width:50%" />
+		</b:row>
+		<b:row>
+                    <b:column span="3" offset="3" colMd="4">
+		      <b:commandButton value="reset" look="danger" style="width:100%" />
 		    </b:column>
-		    <b:column span="2">
-		      <b:commandButton value="password forgotten" look="danger" style="width:50%" />
+                    <b:column span="3" colMd="4">
+                       <b:commandButton value="login" look="primary" style="width:100%" />
 		    </b:column>
-		  </b:row>
-	</b:container>
+                      
+		</b:row>
+        </h:form>
+    </p:panel>
 </h:body>
 </html>
