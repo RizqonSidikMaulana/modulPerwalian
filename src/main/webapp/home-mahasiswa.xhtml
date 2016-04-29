@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Home</title>
+</h:head>
+<h:body>
+   <!-- header -->
+    <b:navBar brandImg="img/unpas-header-small.png" brandHref="#">
+        <b:navbarLinks>
+            <b:navLink value="Beranda FT" href="#"></b:navLink>
+            <b:navLink value="|" href="#"></b:navLink>
+            <b:navLink value="Layanan Mahasiswa" href="#"></b:navLink>
+            <b:navLink value="|" href="#"></b:navLink>
+            <b:navLink value="Pasmail" href="#"></b:navLink>
+            <b:navLink value="|" href="#"></b:navLink>
+            <b:navLink value="Logout" href="#"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
+   
+   <!-- content -->
+   <p:panel style="background-color: rgb(74, 143, 210);">
+       <center>
+           <h:outputText value="Informasi Seputar Perkuliahan"/>
+       </center>       
+   </p:panel>
+   
+   <!-- navigasi -->
+   <b:panel style="margin: auto; width: 65%">
+        <b:panel look="primary" title="Navigation menu" style="float: left; width: 25%;">
+            <b:listLinks >
+                <b:navCommandLink value="Lihat Profile" style="color: black;"/>
+                <b:navCommandLink value="Ubah Profile" style="color: black;"/>
+                <b:navCommandLink value="Pengisian KRS" style="color: black;"/>
+                <b:navCommandLink value="Add dan Drop" style="color: black;"/>
+                <b:navCommandLink value="Perwalian" style="color: black;"/>
+                <b:navCommandLink value="Jadwal Kuliah" style="color: black;"/>
+                <b:navCommandLink value="Jadwal Ujian" style="color: black;"/>
+                <b:navCommandLink value="Nilai"/>
+            </b:listLinks>
+        </b:panel>
+   <!-- end navigasi -->    
+      
+   
+   <!-- isi profile -->
+   <p:panel style="padding: 5%; margin: auto; margin-top: 5%; margin-left: 35%; width: 55%;">
+       <p:panel header="Profile Mahasiswa">
+
+        </p:panel>
+    </p:panel>
+   
+   </b:panel>
+   
+        
+        
+        
+</h:body>
+</html>
+
