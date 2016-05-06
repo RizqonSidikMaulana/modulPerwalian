@@ -28,7 +28,7 @@
             </b:navbarLinks>
         </b:navBar>
         
-        <b:container class="col-lg-12" style="border: 1px black solid; padding: 3px;">
+        <b:container class="col-lg-12" style="margin: auto; border: 1px black solid; padding: 3px;">
             <h:outputText value="Unpas | " style="margin-right: 1%;" />
             <h:outputText value="Tahun Akademik : " />
             <h:selectOneMenu value="Pilih semester" style="margin-right: 1%;">
@@ -42,7 +42,7 @@
             <h:commandButton value="Reset" style="margin-right: 1%;" />
         </b:container>
         
-        <b:container class="col-lg-12">
+        <b:container class="col-lg-12" style="margin: auto;">
             <b:container class="col-lg-2">
                 <b:image alt="foto" name="foto"/>
             </b:container>
@@ -129,6 +129,22 @@
                     </h:form>
                 </h:column>
             </h:dataTable>          
+        </b:container>
+        
+        <b:container class="col-lg-2" style="float: none;">
+            <h:form>
+                <b:commandButton value="Kontrak" look="info" size="sm"/>
+            </h:form>                
+        </b:container>
+        
+        <b:container class="col-lg-4">
+            <b:label text="Berita Acara" />
+            <b:inputTextarea rows="4"/>
+            
+            <h:form class="col-md-8">
+                <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
+                <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
+            </h:form>
         </b:container>
     </h:body>
 </html>
