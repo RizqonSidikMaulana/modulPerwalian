@@ -41,6 +41,95 @@
             <h:outputText value="|" style="margin-right: 1%;" />
             <h:commandButton value="Reset" style="margin-right: 1%;" />
         </b:container>
+        
+        <b:container class="col-lg-12">
+            <b:container class="col-lg-2">
+                <b:image alt="foto" name="foto"/>
+            </b:container>
+            <b:container class="col-lg-2" style="float: left;">
+                <b:panelGrid colSpans="5,2,5">
+                    <h:outputLabel value="NRP"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{NRP}"/>
+                    <h:outputLabel value="Semester" />
+                    <h:outputLabel value=" : " />
+                    <h:outputText value="{Semester}" />
+                    <h:outputLabel value="Batas"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{xxx}"/>
+                </b:panelGrid>
+            </b:container>
+            <b:container class="col-lg-2" style="float: left;">
+                <b:panelGrid colSpans="5,2,5">
+                    <h:outputLabel value="Nama"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{NRP}"/>
+                    <h:outputLabel value="Status" />
+                    <h:outputLabel value=" : " />
+                    <h:outputText value="{Semester}" />
+                    <h:outputLabel value="IPK"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{xxx}"/>
+                </b:panelGrid>
+            </b:container>
+            <b:container class="col-lg-2" style="float: left;">
+                <b:panelGrid colSpans="5,2,5">
+                    <h:outputLabel value="Program"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{NRP}"/>
+                    <h:outputLabel value="Prodi" />
+                    <h:outputLabel value=" : " />
+                    <h:outputText value="{Semester}" />
+                    <h:outputLabel value="Jumlah SKS"/>
+                    <h:outputLabel value=" : "/>
+                    <h:outputText value="{xxx}"/>
+                </b:panelGrid>
+            </b:container>
+        </b:container>
+        
+        <b:container class="col-lg-8" style="margin: auto; border: 1px black solid">
+            <b:label text="Daftar KRS dan PRS semester" />
+            <h:dataTable class="col-lg-8" style="float: none; margin-top: 1%;">
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="No" />
+                    </f:facet>
+                    <h:outputText value="NO" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="Kode MK" />
+                    </f:facet>
+                    <h:inputText value="NO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="Nama MK" />
+                    </f:facet>
+                    <h:inputText value="NO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="Status" />
+                    </f:facet>
+                    <h:inputText value="NO"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="Jumlah SKS" />
+                    </f:facet>
+                    <h:inputText value="{SKS}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                      <h:outputText value="Tambahkan" />
+                    </f:facet>
+                    <h:form>
+                        <b:commandButton value="add" look="info"/>
+                    </h:form>
+                </h:column>
+            </h:dataTable>          
+        </b:container>
     </h:body>
 </html>
 
