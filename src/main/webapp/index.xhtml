@@ -22,19 +22,15 @@
 			<h:outputText value="Username :" />
                     </b:column>
                     <b:column>
-			<b:inputText placeholder="Username" />
-			</b:column>
-                    <b:column colMd="6">
-		    </b:column>
+                        <b:inputText placeholder="Username" value="#{login.name}"/>
+                    </b:column>
 		</b:row>
 		<b:row>
 		    <b:column colMd="2">
 		      <h:outputText value="Password:" />
 		    </b:column>
 		    <b:column colMd="4">
-		      <b:inputSecret placeholder="Password" />
-		    </b:column>
-		    <b:column colMd="6">
+                        <b:inputSecret placeholder="Password" value="#{login.password}"/>
 		    </b:column>
 		</b:row>
 		<b:row>
@@ -42,7 +38,7 @@
 		      <b:commandButton value="reset" look="danger" style="width:100%" />
 		    </b:column>
                     <b:column span="3" colMd="4">
-                       <b:commandButton value="login" look="primary" style="width:100%" />
+                        <b:commandButton action="#{login.validateUsernamePassword()}" value="login" look="primary" style="width:100%" />
 		    </b:column>
                       
 		</b:row>
