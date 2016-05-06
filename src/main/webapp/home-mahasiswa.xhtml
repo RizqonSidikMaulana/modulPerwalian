@@ -11,11 +11,15 @@
     <!-- CSS -->
     <h:outputStylesheet library="css" name="bootstrap.css" />
     <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+    <h:outputStylesheet library="css" name="style-perwalian.css" />
     <title>Home</title>
 </h:head>
 <h:body>
    <!-- header -->
-    <b:navBar brandImg="img/unpas-header-small.png" brandHref="#">
+   <b:navBar style="background-color: #ff9900; color: #fff;">
+        <div class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
+            <img src="img/unpas-header-small.png"/>
+        </div>
         <b:navbarLinks>
             <b:navLink value="Beranda FT" href="#"></b:navLink>
             <b:navLink value="|" href="#"></b:navLink>
@@ -38,27 +42,27 @@
   
    
    <div class="col-lg-12" style="margin: auto; margin-top: 3%;">
-       <b:panel look="primary" title="Sidebar" style="float: left; width: 25%;">
+       <b:panel title="Sidebar" style="float: left; width: 25%;">
             <b:listLinks>
                 <b:navLink header="Profil" />
                 <b:navLink href="#" value="Lihat Profil"
-                           icon="globe" iconAlign="right"/>
+                           icon="user" iconAlign="right"/>
                 <b:navLink href="#" value="Ubah Profil"
-                           icon="globe" iconAlign="right"/>
+                           icon="edit" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
                 <b:navLink header="Menu Perwalian"/>
                 <b:navLink href="#" value="Pengisian KRS"
-                           icon="globe" iconAlign="right"/>
+                           icon="pencil" iconAlign="right"/>
                 <b:navLink href="#" value="Add dan Drop"
-                           icon="globe" iconAlign="right"/>
+                           icon="plus-sign" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
                 <b:navLink header="Menu Perkuliahan"/>
                 <b:navLink href="#" value="Jadwal Kuliah"
-                           icon="globe" iconAlign="right"/>
+                           icon="book" iconAlign="right"/>
                 <b:navLink href="#" value="Jadwal Ujian"
-                           icon="globe" iconAlign="right"/>
+                           icon="calendar" iconAlign="right"/>
                 <b:navLink href="#" value="Nilai"
-                           icon="globe" iconAlign="right"/>
+                           icon="list-alt" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
             </b:listLinks>
         </b:panel>
