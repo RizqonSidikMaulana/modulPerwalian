@@ -45,11 +45,11 @@
             <h:commandButton value="Reset" style="margin-right: 1%;" />
         </b:container>
         
-        <b:container class="col-lg-12" style="margin: auto; margin-top: 2%;">
+        <b:container class="col-lg-12" style="margin: auto; margin-top: 2%; border: 1px #000 groove; padding-top: 1%;">
             <b:container class="col-lg-2">
                 <b:image alt="foto" name="foto"/>
             </b:container>
-            <b:container class="col-lg-2" style="float: left;">
+            <b:container class="col-lg-2" style="float: left; margin-right: 5%;">
                 <b:panelGrid colSpans="5,2,5">
                     <h:outputLabel value="NRP"/>
                     <h:outputLabel value=" : "/>
@@ -62,7 +62,7 @@
                     <h:outputText value="{xxx}"/>
                 </b:panelGrid>
             </b:container>
-            <b:container class="col-lg-2" style="float: left;">
+            <b:container class="col-lg-2" style="float: left; margin-right: 5%;">
                 <b:panelGrid colSpans="5,2,5">
                     <h:outputLabel value="Nama"/>
                     <h:outputLabel value=" : "/>
@@ -75,7 +75,7 @@
                     <h:outputText value="{xxx}"/>
                 </b:panelGrid>
             </b:container>
-            <b:container class="col-lg-2" style="float: left;">
+            <b:container class="col-lg-2" style="float: left; margin-right: 5%;">
                 <b:panelGrid colSpans="5,2,5">
                     <h:outputLabel value="Program"/>
                     <h:outputLabel value=" : "/>
@@ -90,65 +90,95 @@
             </b:container>
         </b:container>
         
-        <b:container class="col-lg-7" style="margin: 2% auto auto 20%; border: 1px black solid">
-            <b:label text="Daftar KRS dan PRS semester" />
-            <h:dataTable class="col-lg-12" style="float: none; margin-top: 1%;">
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="No" />
-                    </f:facet>
-                    <h:outputText value="NO" />
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="Kode MK" />
-                    </f:facet>
-                    <h:inputText value="NO"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="Nama MK" />
-                    </f:facet>
-                    <h:inputText value="NO"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="Status" />
-                    </f:facet>
-                    <h:inputText value="NO"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="Jumlah SKS" />
-                    </f:facet>
-                    <h:inputText value="{SKS}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                      <h:outputText value="Tambahkan" />
-                    </f:facet>
-                    <h:form>
-                        <b:commandButton value="add" look="info"/>
-                    </h:form>
-                </h:column>
-            </h:dataTable>          
-        </b:container>
-        
-        <b:container class="col-lg-2" style="float: none;">
-            <h:form>
-                <b:commandButton value="Kontrak" size="sm" style="margin-top: 3%;"/>
-            </h:form>                
-        </b:container>
-        
-        <b:container class="col-lg-4" style="margin-left: 32%; margin-top: 2%;">
-            <b:label text="Berita Acara" />
-            <b:inputTextarea rows="4"/>
+       <div class="col-lg-12" style="margin: auto; margin-top: 3%;">
+       <!-- sidebar -->
+       <b:panel title="Sidebar" style="float: left; width: 25%;">
+            <b:listLinks>
+                <b:navLink header="Profil" />
+                <b:navLink href="#" value="Lihat Profil"
+                           icon="user" iconAlign="right"/>
+                <b:navLink href="#" value="Ubah Profil"
+                           icon="edit" iconAlign="right"/>
+                <b:navLink><hr></hr></b:navLink>
+                <b:navLink header="Menu Perwalian"/>
+                <b:navLink href="#" value="Pengisian KRS"
+                           icon="pencil" iconAlign="right"/>
+                <b:navLink href="#" value="Add dan Drop"
+                           icon="plus-sign" iconAlign="right"/>
+                <b:navLink><hr></hr></b:navLink>
+                <b:navLink header="Menu Perkuliahan"/>
+                <b:navLink href="#" value="Jadwal Kuliah"
+                           icon="book" iconAlign="right"/>
+                <b:navLink href="#" value="Jadwal Ujian"
+                           icon="calendar" iconAlign="right"/>
+                <b:navLink href="#" value="Nilai"
+                           icon="list-alt" iconAlign="right"/>
+                <b:navLink><hr></hr></b:navLink>
+            </b:listLinks>
+        </b:panel>
+       <!-- nav end -->
+       
+        <b:container class="col-lg-7" style="float: right; margin: auto; margin-right: 8%;">
+            <b:container class="col-lg-7" style="border: 1px black solid; width: 100%;">
+                <b:label text="Daftar KRS dan PRS semester" />
+                <h:dataTable class="col-lg-12" style="float: none; margin-top: 1%;">
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="No" />
+                        </f:facet>
+                        <h:outputText value="NO" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Kode MK" />
+                        </f:facet>
+                        <h:inputText value="NO"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Nama MK" />
+                        </f:facet>
+                        <h:inputText value="NO"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Status" />
+                        </f:facet>
+                        <h:inputText value="NO"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Jumlah SKS" />
+                        </f:facet>
+                        <h:inputText value="{SKS}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Tambahkan" />
+                        </f:facet>
+                        <h:form>
+                            <b:commandButton value="add" look="info"/>
+                        </h:form>
+                    </h:column>
+                </h:dataTable> 
+            </b:container>
+            <b:container class="col-lg-2" style="margin: auto; float: none;">
+                <h:form>
+                    <b:commandButton value="Kontrak" size="sm" style="margin-top: 3%;"/>
+                </h:form>                
+            </b:container>
             
-            <h:form class="col-md-8" style="margin-left: 30%;">
-                <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
-                <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
-            </h:form>
+             <b:container class="col-lg-4" style="margin-top: 5%; width: 100%;">
+                <b:label text="Berita Acara" />
+                <b:inputTextarea rows="4"/>
+                <h:form class="col-md-8" style="margin-left: 30%;">
+                    <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
+                    <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
+                </h:form>
+            </b:container>
         </b:container>
+        
+       </div>
     </h:body>
 </html>
 
