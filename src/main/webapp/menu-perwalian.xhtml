@@ -1,12 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE-Edge" />
+        <!-- CSS -->
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="style-perwalian.css" />
+        <title>Menu Perwalian</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <!-- header -->
+        <b:navBar style="background-color: #ff9900; color: #fff;">
+             <div class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
+                 <img src="img/unpas-header-small.png"/>
+             </div>
+             <b:navbarLinks>
+                 <b:navLink value="Beranda FT" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Layanan Mahasiswa" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Pasmail" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Logout" href="#"></b:navLink>
+             </b:navbarLinks>
+         </b:navBar>
+        
+        <div class="col-lg-12" style="margin: auto; margin-top: 2%;">
+            <!-- sidebar -->
+            <b:panel title="Sidebar" style="float: left; width: 25%;">
+                 <b:listLinks>
+                     <b:navLink header="Profil" />
+                     <b:navLink href="#" value="Lihat Profil"
+                                icon="user" iconAlign="right"/>
+                     <b:navLink href="#" value="Ubah Profil"
+                                icon="edit" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                     <b:navLink header="Menu Perwalian"/>
+                     <b:navLink href="menu-krs.xhtml" value="Pengisian KRS"
+                                icon="pencil" iconAlign="right"/>
+                     <b:navLink href="#" value="Add dan Drop"
+                                icon="plus-sign" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                     <b:navLink header="Menu Perkuliahan"/>
+                     <b:navLink href="#" value="Jadwal Kuliah"
+                                icon="book" iconAlign="right"/>
+                     <b:navLink href="#" value="Jadwal Ujian"
+                                icon="calendar" iconAlign="right"/>
+                     <b:navLink href="#" value="Nilai"
+                                icon="list-alt" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                 </b:listLinks>
+             </b:panel>
+            <!-- nav end -->
+        </div>
     </h:body>
 </html>
 
