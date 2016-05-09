@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE-Edge" />
+        <!-- CSS -->
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="style-perwalian.css" />
+        <title>Menu Perwalian</title>
+    </h:head>
+    <h:body>
+        <!-- header -->
+        <b:navBar style="background-color: #ff9900; color: #fff;">
+             <div class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
+                 <img src="img/unpas-header-small.png"/>
+             </div>
+             <b:navbarLinks>
+                 <b:navLink value="Beranda FT" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Layanan Mahasiswa" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Pasmail" href="#"></b:navLink>
+                 <b:navLink value="|" href="#"></b:navLink>
+                 <b:navLink value="Logout" href="#"></b:navLink>
+             </b:navbarLinks>
+         </b:navBar>
+        <!-- end header -->
+        
+        <div class="col-lg-12" style="margin: auto; margin-top: 2%;">
+            <!-- sidebar -->
+            <b:panel title="Sidebar" style="float: left; width: 25%;">
+                 <b:listLinks>
+                     <b:navLink header="Profil" />
+                     <b:navLink href="#" value="Lihat Profil"
+                                icon="user" iconAlign="right"/>
+                     <b:navLink href="#" value="Ubah Profil"
+                                icon="edit" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                     <b:navLink header="Menu Perwalian"/>
+                     <b:navLink href="menu-krs.xhtml" value="Pengisian KRS"
+                                icon="pencil" iconAlign="right"/>
+                     <b:navLink href="#" value="Add dan Drop"
+                                icon="plus-sign" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                     <b:navLink header="Menu Perkuliahan"/>
+                     <b:navLink href="#" value="Jadwal Kuliah"
+                                icon="book" iconAlign="right"/>
+                     <b:navLink href="#" value="Jadwal Ujian"
+                                icon="calendar" iconAlign="right"/>
+                     <b:navLink href="#" value="Nilai"
+                                icon="list-alt" iconAlign="right"/>
+                     <b:navLink><hr></hr></b:navLink>
+                 </b:listLinks>
+             </b:panel>
+            <!-- nav end -->
+            
+            <!-- content -->
+            <b:container class="col-lg-9" style="float: right;">
+                <b:panel>
+                   <b:container class="col-lg-6" style="float: left; margin-left: -1%; margin-right: 10px">
+                        <b:panel>
+                        <b:label text="Daftar Mahasiswa Belum Disetujui" />
+                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="NRP" />
+                                    </f:facet>
+                                    <h:outputText value="" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nama" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <b:button value="Detail" style="margin-right: 1%;"/>
+                                    <b:button value="Setuju"/>
+                                </h:column>
+
+                            </h:dataTable>
+                        </b:panel>
+                    </b:container>
+                    <b:container class="col-lg-6" style="float: right; margin-top: -18.7%;">
+                        <b:panel>
+                        <b:label text="Daftar Mahasiswa Disetujui" />
+                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered"
+                                         style="width:100%">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="NRP" />
+                                    </f:facet>
+                                    <h:outputText value="" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nama" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                    
+                                </h:column>
+                                <h:column>
+                                    <b:button value="Detail" style="float:right "/>
+                                </h:column>
+                            </h:dataTable>
+                        </b:panel>
+                    </b:container>  
+                </b:panel>                               
+            </b:container>
+            <!-- end konten -->
+        </div>
+    </h:body>
+</html>
+
