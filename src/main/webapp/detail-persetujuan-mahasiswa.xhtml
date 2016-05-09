@@ -13,7 +13,7 @@
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="style-perwalian.css" />
-        <title>Menu Perwalian</title>
+        <title>Detail Mahasiswa</title>
     </h:head>
     <h:body>
         <!-- header -->
@@ -64,53 +64,70 @@
             <!-- content -->
             <b:container class="col-lg-9" style="float: right;">
                 <b:panel>
-                   <b:container class="col-lg-6" style="float: left; margin-left: -1%; margin-right: 10px">
+                   <b:container class="col-lg-8" style="float: left; margin: auto; margin-left: 15%;">
                         <b:panel>
-                        <b:label text="Daftar Mahasiswa Belum Disetujui" />
+                        <b:label text="Daftar KRS dan PRS" />
                             <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="NRP" />
+                                        <h:outputText value="No" />
                                     </f:facet>
                                     <h:outputText value="" />
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Nama" />
+                                        <h:outputText value="Kode MK" />
                                     </f:facet>
                                     <h:outputText value=""/>                                
                                 </h:column>
                                 <h:column>
-                                    <b:button value="Detail" style="margin-right: 1%;"/>
-                                    <b:button value="Setuju"/>
+                                    <f:facet name="header">
+                                        <h:outputText value="Mata Kuliah" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Status" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Kelas" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nilai" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="SKS" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Aksi" />
+                                    </f:facet>
+                                    <b:button value="Hapus" style="margin-right: 1%;"/>
                                 </h:column>
 
                             </h:dataTable>
-                        </b:panel>
+                        </b:panel>                            
                     </b:container>
-                    <b:container class="col-lg-6" style="float: right; margin-top: -18.7%;">
-                        <b:panel>
-                        <b:label text="Daftar Mahasiswa Disetujui" />
-                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered"
-                                         style="width:100%">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="NRP" />
-                                    </f:facet>
-                                    <h:outputText value="" />
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nama" />
-                                    </f:facet>
-                                    <h:outputText value=""/>                                    
-                                </h:column>
-                                <h:column>
-                                    <b:button value="Detail" style="float:right "/>
-                                </h:column>
-                            </h:dataTable>
-                        </b:panel>
-                    </b:container>  
+                    <b:container class="col-lg-6" style="margin-top: 5%; margin-left: 23%;">
+                        <b:label text="Berita Acara" />
+                        <b:inputTextarea rows="4"/>
+                        <h:form class="col-md-8" style="margin-left: 30%;">
+                            <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
+                            <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
+                        </h:form>
+                    </b:container>
                 </b:panel>                               
             </b:container>
             <!-- end konten -->
