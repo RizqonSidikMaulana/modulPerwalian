@@ -59,6 +59,59 @@
                  </b:listLinks>
              </b:panel>
             <!-- nav end -->
+            
+            <!-- content -->
+            <b:container class="col-lg-9" style="float: right;">
+                <b:panel>
+                   <b:container class="col-lg-6" style="float: left; margin-left: -1%; margin-right: 10px">
+                        <b:panel>
+                        <b:label text="Daftar Mahasiswa Belum Disetujui" />
+                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="NRP" />
+                                    </f:facet>
+                                    <h:outputText value="" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nama" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <b:button value="Detail" style="margin-right: 1%;"/>
+                                    <b:button value="Setuju"/>
+                                </h:column>
+
+                            </h:dataTable>
+                        </b:panel>
+                    </b:container>
+                    <b:container class="col-lg-6" style="float: right; margin-top: -18.7%;">
+                        <b:panel>
+                        <b:label text="Daftar Mahasiswa Disetujui" />
+                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered"
+                                         style="width:100%">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="NRP" />
+                                    </f:facet>
+                                    <h:outputText value="" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nama" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                    
+                                </h:column>
+                                <h:column>
+                                    <b:button value="Detail" style="float:right "/>
+                                </h:column>
+                            </h:dataTable>
+                        </b:panel>
+                    </b:container>  
+                </b:panel>                               
+            </b:container>
         </div>
     </h:body>
 </html>
