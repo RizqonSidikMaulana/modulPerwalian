@@ -13,7 +13,7 @@
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="style-perwalian.css" />
-        <title>Detail Mahasiswa</title>
+        <title>Detail Aktivitas Mahasiswa</title>
     </h:head>
     <h:body>
         <!-- header -->
@@ -62,11 +62,11 @@
             <!-- nav end -->
             
             <!-- content -->
-           <b:container styleClass="col-lg-9" style="float: right;">
+            <b:container styleClass="col-lg-9" style="float: right;">
                 <b:panel>
-                  <b:container styleClass="col-lg-8" style="float: left; margin: auto; margin-left: 15%;">
+                   <b:container styleClass="col-lg-9" style="float: left; margin: auto; margin-left: 13%;">
                         <b:panel>
-                        <b:label text="Daftar KRS dan PRS" />
+                        <b:label text="Daftar Mata Kuliah" />
                             <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
                                 <h:column>
                                     <f:facet name="header">
@@ -88,7 +88,7 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Status" />
+                                        <h:outputText value="Kehadiran" />
                                     </f:facet>
                                     <h:outputText value=""/>                                
                                 </h:column>
@@ -100,7 +100,13 @@
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Nilai" />
+                                        <h:outputText value="Nilai UTS" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tugas/Kuis" />
                                     </f:facet>
                                     <h:outputText value=""/>                                
                                 </h:column>
@@ -110,20 +116,13 @@
                                     </f:facet>
                                     <h:outputText value=""/>                                
                                 </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Aksi" />
-                                    </f:facet>
-                                    <b:button value="Hapus" style="margin-right: 1%;"/>
-                                </h:column>
-
                             </h:dataTable>
                         </b:panel>                            
                     </b:container>
-                   <b:container styleClass="col-lg-6" style="margin-top: 5%; margin-left: 23%;">
+                    <b:container styleClass="col-lg-6" style="margin-top: 5%; margin-left: 23%;">
                         <b:label text="Berita Acara" />
                         <b:inputTextarea rows="4"/>
-                        <h:form class="col-md-8" style="margin-left: 30%;">
+                        <h:form styleClass="col-md-8" style="margin-left: 30%;">
                             <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
                             <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
                         </h:form>
