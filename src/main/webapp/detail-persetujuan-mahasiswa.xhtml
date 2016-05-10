@@ -67,7 +67,7 @@
                   <b:container styleClass="col-lg-8" style="float: left; margin: auto; margin-left: 15%;">
                         <b:panel>
                         <b:label text="Daftar KRS dan PRS" />
-                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
+                        <h:dataTable value="#{mahasiswa.listStudents}" var="s" id="daftarMhs" styleClass="table table-striped table-bordered">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="No" />
@@ -78,19 +78,19 @@
                                     <f:facet name="header">
                                         <h:outputText value="Kode MK" />
                                     </f:facet>
-                                    <h:outputText value=""/>                                
+                                    <h:outputText value="#{s.nrp}"/>                                
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Mata Kuliah" />
                                     </f:facet>
-                                    <h:outputText value=""/>                                
+                                    <h:outputText value="#{s.nama}"/>                                
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Status" />
                                     </f:facet>
-                                    <h:outputText value=""/>                                
+                                    <h:outputText value="#{s.alamat}"/>                                
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
