@@ -11,8 +11,8 @@ package com.psbk.modulperwalian.Model;
  */
 public class Mahasiswa {
     
-    private String nama, nrp;
-    private String alamat;
+    private String nama, nrp, noTelp;
+    private String alamat, email, kodeDosen;
     private float ipk;
 
     public String getNama() {
@@ -46,5 +46,30 @@ public class Mahasiswa {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getKodeDosen() {
+        return kodeDosen;
+    }
+
+    public void setKodeDosen(String kodeDosen) {
+        this.kodeDosen = kodeDosen;
+    }
+    
+    public String getNoTelp() {
+        return noTelp;
+    }
+
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
+    }
+    
     
 }
