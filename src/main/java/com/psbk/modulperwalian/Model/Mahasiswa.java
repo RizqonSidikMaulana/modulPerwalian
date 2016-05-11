@@ -12,7 +12,7 @@ package com.psbk.modulperwalian.Model;
 public class Mahasiswa {
     
     private String nama, nrp, noTelp;
-    private String alamat, email, kodeDosen;
+    private String alamat, email;
     private float ipk;
 
     public String getNama() {
@@ -55,14 +55,6 @@ public class Mahasiswa {
         this.email = email;
     }
 
-    public String getKodeDosen() {
-        return kodeDosen;
-    }
-
-    public void setKodeDosen(String kodeDosen) {
-        this.kodeDosen = kodeDosen;
-    }
-    
     public String getNoTelp() {
         return noTelp;
     }

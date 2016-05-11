@@ -12,7 +12,6 @@ package com.psbk.modulperwalian.Model;
 public class Dosen {
     
     private String nip, nama, email, alamat;
-    private String ttl;
 
     public String getNip() {
         return nip;
@@ -45,15 +44,7 @@ public class Dosen {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
-
-    public String getTtl() {
-        return ttl;
-    }
-
-    public void setTtl(String ttl) {
-        this.ttl = ttl;
-    }
-    
+ 
     
     
 }

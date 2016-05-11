@@ -5,17 +5,14 @@
  */
 package com.psbk.modulperwalian.Model;
 
-import java.util.Date;
-
 /**
  *
  * @author dilacim
  */
-public class BeritaAcara {
+public class DetailPerwalian {
     
-    private int id;
-    private String perihal;
-    private Date tgl;
+    int id;
+    Perwalian perwalian;
 
     public int getId() {
         return id;
@@ -25,20 +22,17 @@ public class BeritaAcara {
         this.id = id;
     }
 
-    public String getPerihal() {
-        return perihal;
+    public Perwalian getPerwalian() {
+        return perwalian;
     }
 
-    public void setPerihal(String perihal) {
-        this.perihal = perihal;
+    public void setPerwalian(Perwalian perwalian) {
+        this.perwalian = perwalian;
     }
-
-    public Date getTgl() {
-        return tgl;
-    }
-
-    public void setTgl(Date tgl) {
-        this.tgl = tgl;
-    }    
-        
+   
+    
+    
+    
+    
+    
 }

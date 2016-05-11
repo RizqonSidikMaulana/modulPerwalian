@@ -11,18 +11,19 @@ package com.psbk.modulperwalian.Model;
  */
 public class Perwalian {
     
-    private String idBeritaAcara, semester, status;
+    private String semester, status;
     private Mahasiswa mhs;
     private Dosen dosen;
+    private int id;
 
-    public String getIdBeritaAcara() {
-        return idBeritaAcara;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBeritaAcara(String idBeritaAcara) {
-        this.idBeritaAcara = idBeritaAcara;
-    }
-
+    public void setId(int id) {
+        this.id = id;
+    }  
+    
     public String getSemester() {
         return semester;
     }
