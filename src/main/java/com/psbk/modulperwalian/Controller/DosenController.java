@@ -43,27 +43,27 @@ public class DosenController {
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
-	String url = "dosen/apa/";
+	String url = "dosen/getDosen/dos01";
 	obj = new URL(BASE_URL + url);
 //        String data = String.format("param1=%s", URLEncoder.encode(url, url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-	connection.setRequestMethod("POST");
+//        connection.setDoOutput(true);
+//        connection.setDoInput(true);
+	connection.setRequestMethod("GET");
         connection.setRequestProperty("Content-Type", "application/json");
 	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
         //Send request
-        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-        wr.write("dos01");
-        wr.flush();              
-        
+//        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
+//        wr.write("dos01");
+//        wr.flush();              
+//        
 	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String inputLine;
 	StringBuffer response = new StringBuffer();
 	while ((inputLine = in.readLine()) != null ) {
             response.append(inputLine);
 	}
-	wr.close();
+//	wr.close();
 	in.close();
 	JSONObject result;
 	JSONObject jsonObject = new JSONObject(response.toString());
@@ -146,11 +146,11 @@ public class DosenController {
     }
     
     /* method untuk mengambil detail krs mahasiswa wali */
-    public Perwalian getDetailKrs() throws Exception {
+    public void getDetailKrs() throws Exception {
         FacesContext fc = FacesContext.getCurrentInstance();
     	HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
     	String nrp = request.getParameter("nrp");
-        String url = "mhsByNrp/" + nrp;
+        String url = "mahasiswa/mhsByNrp/" + nrp;
 	obj = new URL(url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 	connection.setRequestMethod("GET");
@@ -173,8 +173,6 @@ public class DosenController {
         p.setStatus(result.getString("status"));
         p.getMk().setSks(result.getInt("sks"));
         
-        
-        return p;
     }
     
     
