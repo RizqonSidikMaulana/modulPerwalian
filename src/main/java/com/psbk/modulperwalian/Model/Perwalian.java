@@ -13,9 +13,19 @@ public class Perwalian {
     
     private String semester, status;
     private Mahasiswa mhs = new Mahasiswa();
-    private Dosen dosen;
+    private Dosen dosen = new Dosen();
+    private MataKuliah mk = new MataKuliah();
     private int id;
 
+    public MataKuliah getMk() {
+        return mk;
+    }
+
+    public void setMk(MataKuliah mk) {
+        this.mk = mk;
+    }
+      
+    
     public int getId() {
         return id;
     }

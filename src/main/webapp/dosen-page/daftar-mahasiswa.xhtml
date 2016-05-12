@@ -69,19 +69,19 @@
             <b:panel style="padding: -1%; margin-left: 26%; width: 60%;">
                 <b:label text="Daftar Mahasiswa" />
                 <b:panel class="col-lg-12">
-                    <b:dataTable value="#" var="dos" id="daftarMhs" styleClass="table table-striped table-bordered"
+                    <b:dataTable value="#{dosenC.listMahasiswa}" var="dos" id="daftarMhs" styleClass="table table-striped table-bordered"
                                  style="width:100%">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="NRP" />
                             </f:facet>
-                            <h:outputText value="" />
+                            <h:outputText value="#{dos.nrp}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Nama" />
                             </f:facet>
-                            <h:outputText value=""/>                            
+                            <h:outputText value="#{dos.nama}"/>                            
                         </h:column>
                         <h:column>
                             <f:facet name="header">

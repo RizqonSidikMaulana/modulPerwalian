@@ -9,14 +9,18 @@ import com.psbk.modulperwalian.Model.Dosen;
 import com.psbk.modulperwalian.Model.Mahasiswa;
 import com.psbk.modulperwalian.Model.Perwalian;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -29,61 +33,29 @@ public class DosenController {
     
     private Dosen dosen;
     private Mahasiswa mhs;
+    private Perwalian p;
     private String BASE_URL = "http://192.168.173.246:9090/Service/";
     private List<Mahasiswa> mhsList;
     private List<Dosen> dosenList;
     private List<Perwalian> waliList;
     private URL obj;
-
-    public Dosen getDosen() {
-        return dosen;
-    }
-
-    public void setDosen(Dosen dosen) {
-        this.dosen = dosen;
-    }
-
-    public List<Dosen> getDosenList() {
-        return dosenList;
-    }
-
-    public void setDosenList(List<Dosen> dosenList) {
-        this.dosenList = dosenList;
-    }
-
-    public Mahasiswa getMhs() {
-        return mhs;
-    }
-
-    public void setMhs(Mahasiswa mhs) {
-        this.mhs = mhs;
-    }
-
-    public List<Mahasiswa> getMhsList() {
-        return mhsList;
-    }
-
-    public void setMhsList(List<Mahasiswa> mhsList) {
-        this.mhsList = mhsList;
-    }
     
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
 	String url = "dosen/apa/";
 	obj = new URL(BASE_URL + url);
+//        String data = String.format("param1=%s", URLEncoder.encode(url, url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-//        connection.setDoInput(true);
-//        connection.setDoOutput(true);
+        connection.setDoOutput(true);
+        connection.setDoInput(true);
 	connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("id_dosen", "dos02");
 	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
-//        JSONObject id = new JSONObject();
-//        id.put("id_dosen", "dos01");
-//        OutputStream os = connection.getOutputStream();
-//        os.write(id.toString().getBytes());
-//        os.flush();
+        //Send request
+        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
+        wr.write("dos01");
+        wr.flush();              
         
 	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String inputLine;
@@ -91,7 +63,7 @@ public class DosenController {
 	while ((inputLine = in.readLine()) != null ) {
             response.append(inputLine);
 	}
-		
+	wr.close();
 	in.close();
 	JSONObject result;
 	JSONObject jsonObject = new JSONObject(response.toString());
@@ -106,14 +78,14 @@ public class DosenController {
         return dosen;
     }
     
-    /* method untuk mengambil daftar anak wali testing using post*/
+    /* method untuk mengambil daftar anak wali*/
     public List<Mahasiswa> getMhsPerwalian() throws Exception {
         
         mhsList = new ArrayList<>();
 	String url = "dosen/x/dos01";
 	obj = new URL(BASE_URL + url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-	connection.setRequestMethod("POST");
+	connection.setRequestMethod("GET");
         connection.setRequestProperty("Content-Type", "application/json");
 	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
 	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -173,9 +145,12 @@ public class DosenController {
 	return mhsList;
     }
     
-    /* method untuk mengambil detail mahasiswa wali */
-    public Mahasiswa getDetailMhs(String nrp) throws Exception {
-        String url = "mhsByNrp/02";
+    /* method untuk mengambil detail krs mahasiswa wali */
+    public Perwalian getDetailKrs() throws Exception {
+        FacesContext fc = FacesContext.getCurrentInstance();
+    	HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+    	String nrp = request.getParameter("nrp");
+        String url = "mhsByNrp/" + nrp;
 	obj = new URL(url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 	connection.setRequestMethod("GET");
@@ -193,37 +168,39 @@ public class DosenController {
 	JSONObject jsonObject = new JSONObject(response.toString());
 	result = (JSONObject) jsonObject.get("result");
 	result = (JSONObject) result.get("map");
-	Mahasiswa mhs = new Mahasiswa();
-        mhs.setNama(result.getString("nama"));
-        mhs.setNrp(result.getString("nrp"));
+	p.getMhs().setNrp(result.getString("nrp"));
+        p.getMk().setKode(result.getString("kode_mk"));
+        p.setStatus(result.getString("status"));
+        p.getMk().setSks(result.getInt("sks"));
         
-        return mhs;
-    }
-    
-    
-    public Perwalian getDetailPerwalian() throws Exception {
-        String url = "mhsByNrp/02";
-	obj = new URL(url);
-	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-	connection.setRequestMethod("GET");
-	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
-	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-	String inputLine;
-	StringBuffer response = new StringBuffer();
-	
-        while ((inputLine = in.readLine()) != null ) {
-            response.append(inputLine);
-	}
-		
-	in.close();
-	JSONObject result;
-	JSONObject jsonObject = new JSONObject(response.toString());
-	result = (JSONObject) jsonObject.get("result");
-	result = (JSONObject) result.get("map");
-	Perwalian p = new Perwalian();        
-	
+        
         return p;
     }
+    
+    
+//    public Perwalian getDetailPerwalian() throws Exception {
+//        String url = "mhsByNrp/02";
+//	obj = new URL(url);
+//	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+//	connection.setRequestMethod("GET");
+//	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
+//	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+//	String inputLine;
+//	StringBuffer response = new StringBuffer();
+//	
+//        while ((inputLine = in.readLine()) != null ) {
+//            response.append(inputLine);
+//	}
+//		
+//	in.close();
+//	JSONObject result;
+//	JSONObject jsonObject = new JSONObject(response.toString());
+//	result = (JSONObject) jsonObject.get("result");
+//	result = (JSONObject) result.get("map");
+//	Perwalian p = new Perwalian();        
+//	
+//        return p;
+//    }
     
     /* method untuk menampilkan daftar mahasiswa yang sudah perwalian */
     public List<Perwalian> getMhsHasPerwalian() throws Exception {
