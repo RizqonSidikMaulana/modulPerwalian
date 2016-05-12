@@ -106,8 +106,8 @@ public class DosenController {
     public List<Mahasiswa> getMhsPerwalian() throws Exception {
         
         mhsList = new ArrayList<>();
-	String url = "x/dos01";
-	obj = new URL(BASE_URL + url);
+	String url = "http://192.168.173.246:9090/Service/dosen/x/dos01";
+	obj = new URL(url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 	connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
@@ -140,7 +140,7 @@ public class DosenController {
    
     public List<Mahasiswa> getListMahasiswa() throws Exception {
         mhsList = new ArrayList<>();
-	String url = "x/dos01";
+	String url = "dosen/x/dos01";
 	obj = new URL(BASE_URL + url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 	connection.setRequestMethod("GET");
@@ -164,8 +164,7 @@ public class DosenController {
             s.setNrp(result.getString("nrp"));
             s.setNama(result.getString("nama"));
             mhsList.add(s);
-        }
-	        
+        }	        
 		
 	return mhsList;
     }
@@ -192,7 +191,7 @@ public class DosenController {
 	Mahasiswa mhs = new Mahasiswa();
         mhs.setNama(result.getString("nama"));
         mhs.setNrp(result.getString("nrp"));
-	
+        
         return mhs;
     }
     
@@ -215,8 +214,7 @@ public class DosenController {
 	JSONObject jsonObject = new JSONObject(response.toString());
 	result = (JSONObject) jsonObject.get("result");
 	result = (JSONObject) result.get("map");
-	Perwalian p = new Perwalian();
-        
+	Perwalian p = new Perwalian();        
 	
         return p;
     }

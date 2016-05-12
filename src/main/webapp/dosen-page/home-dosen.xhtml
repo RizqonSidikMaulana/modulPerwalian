@@ -18,7 +18,7 @@
    <!-- header -->
    <b:navBar style="background-color: #ff9900; color: #fff;">
         <b:container class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
-            <img src="img/unpas-header-small.png"/>
+            <img src="../img/unpas-header-small.png"/>
         </b:container>
         <b:navbarLinks>
             <b:navLink value="Beranda FT" href="#"></b:navLink>
@@ -39,8 +39,9 @@
    </p:panel>
        
    
+  
+   
    <b:container class="col-lg-12" style="margin: auto; margin-top: 3%;">
-       <!-- sidebar -->
        <b:panel title="Sidebar" style="float: left; width: 25%;">
             <b:listLinks>
                 <b:navLink header="Profil" />
@@ -50,19 +51,17 @@
                            icon="edit" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
                 <b:navLink header="Menu Perwalian"/>
-                <b:navLink href="menu-krs.xhtml" value="Pengisian KRS"
-                           icon="pencil" iconAlign="right"/>
-                <b:navLink href="#" value="Add dan Drop"
-                           icon="plus-sign" iconAlign="right"/>
+                <b:navLink href="#" value="Daftar Mahasiswa"
+                           icon="list-alt" iconAlign="right"/>
+                <b:navLink href="#" value="Perwalian    "
+                           icon="edit" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
                 <b:navLink header="Menu Perkuliahan"/>
                 <b:navLink href="#" value="Jadwal Kuliah"
                            icon="book" iconAlign="right"/>
                 <b:navLink href="#" value="Jadwal Ujian"
                            icon="calendar" iconAlign="right"/>
-                <b:navLink href="#" value="Nilai"
-                           icon="list-alt" iconAlign="right"/>
-                <b:navLink><hr></hr></b:navLink>
+                
             </b:listLinks>
         </b:panel>
        <!-- nav end -->
@@ -73,10 +72,10 @@
                     <b:panelGrid colSpans="4,1,7">
                         <h:outputLabel value="Nama Lengkap" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value=""/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.nama}"/>
                         <h:outputLabel value="Tempat Tgl Lahir" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value="GHGHGHG"/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.tgl}"/>
                         <h:outputLabel value="No Telp" />
                         <h:outputLabel value=" : " />
                         <h:outputText class="col-xs-5" value="GHGHGHG"/>

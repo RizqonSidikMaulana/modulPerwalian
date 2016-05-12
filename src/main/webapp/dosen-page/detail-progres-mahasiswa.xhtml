@@ -13,13 +13,14 @@
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="style-perwalian.css" />
-        <title>Menu Perwalian</title>
+        <title>Detail Aktivitas Mahasiswa</title>
     </h:head>
+    
     <h:body>
         <!-- header -->
         <b:navBar style="background-color: #ff9900; color: #fff;">
              <b:container class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
-                 <img src="img/unpas-header-small.png"/>
+                 <img src="../img/unpas-header-small.png"/>
              </b:container>
              <b:navbarLinks>
                  <b:navLink value="Beranda FT" href="#"></b:navLink>
@@ -62,55 +63,71 @@
             <!-- nav end -->
             
             <!-- content -->
-            <b:container class="col-lg-9" style="float: right;">
+            <b:container styleClass="col-lg-9" style="float: right;">
                 <b:panel>
-                   <b:container class="col-lg-6" style="float: left; margin-left: -1%; margin-right: 10px">
+                   <b:container styleClass="col-lg-9" style="float: left; margin: auto; margin-left: 13%;">
                         <b:panel>
-                        <b:label text="Daftar Mahasiswa Belum Disetujui" />
+                        <b:label text="Daftar Mata Kuliah" />
                             <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered">
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="NRP" />
+                                        <h:outputText value="No" />
                                     </f:facet>
                                     <h:outputText value="" />
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Nama" />
+                                        <h:outputText value="Kode MK" />
                                     </f:facet>
                                     <h:outputText value=""/>                                
                                 </h:column>
                                 <h:column>
-                                    <b:button value="Detail" style="margin-right: 1%;"/>
-                                    <b:button value="Setuju"/>
+                                    <f:facet name="header">
+                                        <h:outputText value="Mata Kuliah" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
                                 </h:column>
-
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Kehadiran" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Kelas" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nilai UTS" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Tugas/Kuis" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="SKS" />
+                                    </f:facet>
+                                    <h:outputText value=""/>                                
+                                </h:column>
                             </h:dataTable>
-                        </b:panel>
+                        </b:panel>                            
                     </b:container>
-                    <b:container class="col-lg-6" style="float: right; margin-top: -18.7%;">
-                        <b:panel>
-                        <b:label text="Daftar Mahasiswa Disetujui" />
-                            <h:dataTable value="" var="mhs" id="daftarMhs" styleClass="table table-striped table-bordered"
-                                         style="width:100%">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="NRP" />
-                                    </f:facet>
-                                    <h:outputText value="" />
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nama" />
-                                    </f:facet>
-                                    <h:outputText value=""/>                                    
-                                </h:column>
-                                <h:column>
-                                    <b:button value="Detail" style="float:right "/>
-                                </h:column>
-                            </h:dataTable>
-                        </b:panel>
-                    </b:container>  
+                    <b:container styleClass="col-lg-6" style="margin-top: 5%; margin-left: 23%;">
+                        <b:label text="Berita Acara" />
+                        <b:inputTextarea rows="4"/>
+                        <h:form styleClass="col-md-8" style="margin-left: 30%;">
+                            <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
+                            <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
+                        </h:form>
+                    </b:container>
                 </b:panel>                               
             </b:container>
             <!-- end konten -->
