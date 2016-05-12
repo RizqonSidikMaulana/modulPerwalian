@@ -12,8 +12,9 @@ package com.psbk.modulperwalian.Model;
 public class Mahasiswa {
     
     private String nama, nrp, noTelp;
+    private String tgl;
     private String alamat, email;
-    private float ipk;
+    private double ipk;
 
     public String getNama() {
         return nama;
@@ -31,11 +32,11 @@ public class Mahasiswa {
         this.nrp = nrp;
     }
 
-    public float getIpk() {
+    public double getIpk() {
         return ipk;
     }
 
-    public void setIpk(float ipk) {
+    public void setIpk(double ipk) {
         this.ipk = ipk;
     }
 
@@ -62,6 +63,15 @@ public class Mahasiswa {
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
     }
+
+    public String getTgl() {
+        return tgl;
+    }
+
+    public void setTgl(String tgl) {
+        this.tgl = tgl;
+    }
+    
     
     
 }

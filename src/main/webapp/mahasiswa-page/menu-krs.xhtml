@@ -22,7 +22,7 @@
                  <img src="../img/unpas-header-small.png"/>
              </div>
              <b:navbarLinks>
-                 <b:navLink value="Beranda FT" href="#"></b:navLink>
+                 <b:navLink value="Beranda FT" href="home-mahasiswa.xhtml"></b:navLink>
                  <b:navLink value="|" href="#"></b:navLink>
                  <b:navLink value="Layanan Mahasiswa" href="#"></b:navLink>
                  <b:navLink value="|" href="#"></b:navLink>
@@ -54,7 +54,7 @@
                 <b:panelGrid colSpans="5,2,5">
                     <h:outputLabel value="NRP"/>
                     <h:outputLabel value=" : "/>
-                    <h:outputText value="{NRP}"/>
+                    <h:outputText value="#{mahasiswa.dataMhs.nrp}"/>
                     <h:outputLabel value="Semester" />
                     <h:outputLabel value=" : " />
                     <h:outputText value="{Semester}" />
@@ -67,13 +67,13 @@
                 <b:panelGrid colSpans="5,2,5">
                     <h:outputLabel value="Nama"/>
                     <h:outputLabel value=" : "/>
-                    <h:outputText value="{NRP}"/>
+                    <h:outputText value="#{mahasiswa.dataMhs.nama}"/>
                     <h:outputLabel value="Status" />
                     <h:outputLabel value=" : " />
                     <h:outputText value="{Semester}" />
                     <h:outputLabel value="IPK"/>
                     <h:outputLabel value=" : "/>
-                    <h:outputText value="{xxx}"/>
+                    <h:outputText value="#{mahasiswa.dataMhs.ipk}"/>
                 </b:panelGrid>
             </b:container>
             <b:container styleClass="col-lg-2" style="float: left; margin-right: 5%;">
@@ -123,24 +123,24 @@
            <b:panel>
            <b:container styleClass="col-lg-7" style="border: 1px black solid; width: 100%;">
                 <b:label text="Daftar KRS dan PRS semester" />
-                <h:dataTable styleClass="col-lg-12" style="float: none; margin-top: 1%;">
+                <h:dataTable styleClass="col-lg-12" value="#{matkul.listMataKuliah}" var="mk" style="float: none; margin-top: 1%;">
                     <h:column>
                         <f:facet name="header">
                           <h:outputText value="No" />
                         </f:facet>
-                        <h:outputText value="NO" />
+                        <h:outputText value="#{mk.i}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                           <h:outputText value="Kode MK" />
                         </f:facet>
-                        <h:inputText value="NO"/>
+                        <h:inputText value="#{mk.kode}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                           <h:outputText value="Nama MK" />
                         </f:facet>
-                        <h:inputText value="NO"/>
+                        <h:inputText value="#{mk.nama}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -152,7 +152,7 @@
                         <f:facet name="header">
                           <h:outputText value="Jumlah SKS" />
                         </f:facet>
-                        <h:inputText value="{SKS}"/>
+                        <h:inputText value="#{mk.sks}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">

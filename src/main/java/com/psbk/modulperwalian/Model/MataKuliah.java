@@ -12,7 +12,15 @@ package com.psbk.modulperwalian.Model;
 public class MataKuliah {
     
     private String kode, nama;
-    private int sks;
+    private int sks, i;
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
 
     public String getKode() {
         return kode;

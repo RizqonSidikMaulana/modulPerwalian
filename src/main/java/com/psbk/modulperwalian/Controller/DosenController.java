@@ -43,19 +43,28 @@ public class DosenController {
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
-	String url = "dosen/getDosen/dos01";
+//	String url = "dosen/getDosen/dos01";
+        String url = "dosen/apa/";
 	obj = new URL(BASE_URL + url);
 //        String data = String.format("param1=%s", URLEncoder.encode(url, url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-//        connection.setDoOutput(true);
+        connection.setDoOutput(true);
 //        connection.setDoInput(true);
-	connection.setRequestMethod("GET");
+        connection.setUseCaches(false);
+	connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
 	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
         //Send request
-//        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-//        wr.write("dos01");
-//        wr.flush();              
+        
+        
+        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
+        JSONObject param = new JSONObject();
+        param.put("id_dosen", "dos01");
+        
+        param.write(wr);
+        wr.write(URLEncoder.encode(param.toString(),"UTF-8"));
+        wr.flush();         
+	wr.close();
 //        
 	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	String inputLine;
@@ -63,7 +72,6 @@ public class DosenController {
 	while ((inputLine = in.readLine()) != null ) {
             response.append(inputLine);
 	}
-//	wr.close();
 	in.close();
 	JSONObject result;
 	JSONObject jsonObject = new JSONObject(response.toString());

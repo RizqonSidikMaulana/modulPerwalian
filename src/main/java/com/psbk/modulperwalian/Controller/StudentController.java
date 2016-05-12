@@ -25,17 +25,46 @@ import org.codehaus.jettison.json.JSONObject;
 @ManagedBean(name="mahasiswa")
 public class StudentController {
     private String BASE_URL = "http://192.168.173.246:9090/Service/mahasiswa/";
-    private Mahasiswa student;
+    private Mahasiswa s;
 	private List<Mahasiswa> listStudents;
 
 	public Mahasiswa getStudent() {
-		return student;
+		return s;
 	}
 
 	public void setStudent(Mahasiswa student) {
-		this.student = student;
+		this.s = student;
 	}
 	
+        public Mahasiswa getDataMhs() throws Exception {
+            String url = "mhsByNrp/02";
+		URL obj = new URL(BASE_URL + url);
+		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+		connection.setRequestMethod("GET");
+		connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
+		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+		while ((inputLine = in.readLine()) != null ) {
+			response.append(inputLine);
+		}
+		
+		in.close();
+		JSONObject result;
+		JSONObject jsonObject = new JSONObject(response.toString());
+		result = (JSONObject) jsonObject.get("result");
+		result = (JSONObject) result.get("map");
+		Mahasiswa s = new Mahasiswa();
+		s.setNrp(result.get("nrp").toString());
+		s.setNama(result.getString("nama"));
+		s.setAlamat(result.getString("alamat"));
+                s.setTgl(result.getString("tglLahir"));
+                s.setNoTelp(result.getString("noTelp"));
+                s.setEmail(result.getString("email"));
+                s.setIpk(result.getDouble("ipk"));
+                
+                return s;
+        }
 	
 	public List<Mahasiswa> getListStudents() throws Exception {
 		listStudents = new ArrayList<>();
@@ -69,18 +98,18 @@ public class StudentController {
 		this.listStudents = listStudents;
 	}
 
-	public List<Mahasiswa> getListStudent() {
-		listStudents = new ArrayList<Mahasiswa>();
-		Mahasiswa s1 = new Mahasiswa();
-		s1.setNrp("1");
-		s1.setNama("satu");
-		s1.setAlamat("satu");
-		listStudents.add(s1);
-		
-		return listStudents;
-	}
+//	public List<Mahasiswa> getListStudent() {
+//		listStudents = new ArrayList<Mahasiswa>();
+//		Mahasiswa s1 = new Mahasiswa();
+//		s1.setNrp("1");
+//		s1.setNama("satu");
+//		s1.setAlamat("satu");
+//		listStudents.add(s1);
+//		
+//		return listStudents;
+//	}
 	
 	public void invalidateStudent() {
-		student = new Mahasiswa();
+		s = new Mahasiswa();
 	}
 }

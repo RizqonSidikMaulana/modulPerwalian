@@ -14,15 +14,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 
 /**
  *
  * @author dilacim
  */
+
+@ManagedBean(name="matkul")
 public class MatakuliahController {
     private MataKuliah mk;
-    private String BASE_URL = "http://192.168.173.246:9090/Service/mahasiswa/";
+    private String BASE_URL = "http://192.168.173.246:9090/Service/matakuliah";
     private List<MataKuliah> mkList;
 
     public void setMk(MataKuliah mk) {
@@ -34,28 +38,36 @@ public class MatakuliahController {
     }
     
    
-    public List<MataKuliah> getListStudents() throws Exception {
-		mkList = new ArrayList<>();
-		String url = "";
-		URL obj = new URL(BASE_URL+url);
-		HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-		connection.setRequestMethod("GET");
-		connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
-		BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-		while ((inputLine = in.readLine()) != null ) {
-			response.append(inputLine);
-		}
-		
-		in.close();
-		JSONObject result;
-		JSONObject jsonObject = new JSONObject(response.toString());
-		result = (JSONObject) jsonObject.get("result");
-		result = (JSONObject) result.get("map");
-		MataKuliah mk = new MataKuliah();
-		mk.setKode(result.getString("kode"));
-//                
-		return mkList;
+    public List<MataKuliah> getListMataKuliah() throws Exception {
+	mkList = new ArrayList<>();
+	String url = "/mkAll";
+	URL obj = new URL(BASE_URL+url);
+	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+	connection.setRequestMethod("GET");
+	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
+	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String inputLine;
+	StringBuffer response = new StringBuffer();
+	while ((inputLine = in.readLine()) != null ) {
+            response.append(inputLine);
 	}
+		
+	in.close();
+	JSONObject result;
+	JSONObject jsonObject = new JSONObject(response.toString());
+	JSONArray jsonArray = (JSONArray) jsonObject.get("result");
+	
+	for(int i=0; i<jsonArray.length(); i++){
+            JSONObject objek = (JSONObject) jsonArray.get(i);
+            result = (JSONObject) objek.get("map");
+            MataKuliah mk = new MataKuliah();
+            mk.setI(i+1);
+            mk.setKode(result.getString("kode_mk"));
+            mk.setNama(result.getString("nama_mk"));
+            mk.setSks(result.getInt("sks"));
+            mkList.add(mk);
+        }
+	        
+	return mkList;
+    }
 }
