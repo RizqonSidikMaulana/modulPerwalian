@@ -81,8 +81,15 @@
                             <f:facet name="header">
                                 <h:outputText value="Nama" />
                             </f:facet>
-                            <h:outputText value="#{dos.nama}"/>
-                            <b:button value="Detail" style="float:right "/>
+                            <h:outputText value="#{dos.nama}"/>                            
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Aksi" />
+                            </f:facet>
+                            <h:form>
+                                <b:commandButton value="Detail"/>
+                            </h:form>
                         </h:column>
                     </b:dataTable>
                 </b:panel>

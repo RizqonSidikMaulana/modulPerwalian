@@ -5,20 +5,32 @@
  */
 package com.psbk.modulperwalian.Model;
 
+import java.util.Date;
+
 /**
  *
  * @author dilacim
  */
 public class Dosen {
     
-    private String nip, nama, email, alamat;
+    private String idDosen, nama, email, alamat;
+    private String tgl;
 
-    public String getNip() {
-        return nip;
+    public String getTgl() {
+        return tgl;
     }
 
-    public void setNip(String nip) {
-        this.nip = nip;
+    public void setTgl(String tgl) {
+        this.tgl = tgl;
+    } 
+    
+
+    public String getIdDosen() {
+        return idDosen;
+    }
+
+    public void setIdDosen(String idDosen) {
+        this.idDosen = idDosen;
     }
 
     public String getNama() {
