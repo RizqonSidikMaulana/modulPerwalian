@@ -12,7 +12,7 @@ package com.psbk.modulperwalian.Model;
 public class Perwalian {
     
     private String semester, status;
-    private Mahasiswa mhs;
+    private Mahasiswa mhs = new Mahasiswa();
     private Dosen dosen;
     private int id;
 

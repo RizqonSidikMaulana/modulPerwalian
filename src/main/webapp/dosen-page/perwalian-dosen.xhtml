@@ -72,21 +72,23 @@
                 <b:container styleClass="col-md-6">
                     <b:label text="Belum disetujui"/>
                     <b:panel>                        
-                        <b:dataTable value="" var="mhs" id="mhsBelumDisetujui" styleClass="table table-striped table-bordered"
+                        <b:dataTable value="#{dosenC.mhsHasPerwalian}" var="dos" id="mhsBelumDisetujui" styleClass="table table-striped table-bordered"
                                      style="width:100%">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="NRP" />
                                 </f:facet>
-                                <h:outputText value="" />
+                                <h:outputText value="#{dos.mhs.nrp}" />
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Nama" />
                                 </f:facet>
-                                <h:outputText value=""/>
-                                <b:button value="Setuju" style="float:right "/>
-                                <b:button value="Detail" style="float:right "/>
+                                <h:outputText value="#{dos.mhs.nama}"/>
+                                <h:form>
+                                    <p:button href="detail-persetujuan-mahasiswa.xhtml" value="Detail" style="float:right "/>
+                                    <p:button href="" value="Setuju" style="float:right "/>
+                                </h:form>
                             </h:column>
                         </b:dataTable>
                     </b:panel>
@@ -95,20 +97,20 @@
                 <b:container styleClass="col-md-6">
                     <b:label text="Sudah disetujui"/>
                     <b:panel>    
-                        <b:dataTable value="" var="mhs" id="mhsDisetujui" styleClass="table table-striped table-bordered"
+                        <b:dataTable value="#{dosenC.mhsNotPerwalian}" var="dos" id="mhsDisetujui" styleClass="table table-striped table-bordered"
                                      style="width:100%">
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="NRP" />
                                 </f:facet>
-                                <h:outputText value="" />
+                                <h:outputText value="#{dos.mhs.nrp}" />
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Nama" />
                                 </f:facet>
-                                <h:outputText value=""/>
-                                <b:button value="Detail" style="float:right "/>
+                                <h:outputText value="#{dos.mhs.nama}"/>
+                                <p:button href="detail-persetujuan-mahasiswa.xhtml" value="Detail" style="float:right "/>
                             </h:column>
                         </b:dataTable>
                     </b:panel>

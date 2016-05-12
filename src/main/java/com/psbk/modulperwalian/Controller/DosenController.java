@@ -32,6 +32,7 @@ public class DosenController {
     private String BASE_URL = "http://192.168.173.246:9090/Service/";
     private List<Mahasiswa> mhsList;
     private List<Dosen> dosenList;
+    private List<Perwalian> waliList;
     private URL obj;
 
     public Dosen getDosen() {
@@ -66,15 +67,17 @@ public class DosenController {
         this.mhsList = mhsList;
     }
     
+    /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
-	String url = "dosen/ambil/";
+	String url = "dosen/apa/";
 	obj = new URL(BASE_URL + url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 //        connection.setDoInput(true);
 //        connection.setDoOutput(true);
 	connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("id_dosen", "dos02");
 	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
 //        JSONObject id = new JSONObject();
 //        id.put("id_dosen", "dos01");
@@ -103,11 +106,12 @@ public class DosenController {
         return dosen;
     }
     
+    /* method untuk mengambil daftar anak wali testing using post*/
     public List<Mahasiswa> getMhsPerwalian() throws Exception {
         
         mhsList = new ArrayList<>();
-	String url = "http://192.168.173.246:9090/Service/dosen/x/dos01";
-	obj = new URL(url);
+	String url = "dosen/x/dos01";
+	obj = new URL(BASE_URL + url);
 	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 	connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
@@ -137,7 +141,7 @@ public class DosenController {
 	return mhsList;
     }
     
-   
+   /* method untuk mengambil daftar anak wali testing using post*/
     public List<Mahasiswa> getListMahasiswa() throws Exception {
         mhsList = new ArrayList<>();
 	String url = "dosen/x/dos01";
@@ -169,6 +173,7 @@ public class DosenController {
 	return mhsList;
     }
     
+    /* method untuk mengambil detail mahasiswa wali */
     public Mahasiswa getDetailMhs(String nrp) throws Exception {
         String url = "mhsByNrp/02";
 	obj = new URL(url);
@@ -195,6 +200,7 @@ public class DosenController {
         return mhs;
     }
     
+    
     public Perwalian getDetailPerwalian() throws Exception {
         String url = "mhsByNrp/02";
 	obj = new URL(url);
@@ -217,5 +223,77 @@ public class DosenController {
 	Perwalian p = new Perwalian();        
 	
         return p;
+    }
+    
+    /* method untuk menampilkan daftar mahasiswa yang sudah perwalian */
+    public List<Perwalian> getMhsHasPerwalian() throws Exception {
+        waliList = new ArrayList<>();
+	String url = "dosen/getMhsWali/dos01";
+	obj = new URL(BASE_URL + url);
+	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+	connection.setRequestMethod("GET");
+	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
+	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String inputLine;
+	StringBuffer response = new StringBuffer();
+	while ((inputLine = in.readLine()) != null ) {
+            response.append(inputLine);
+	}
+		
+	in.close();
+	JSONObject result;
+	JSONObject jsonObject = new JSONObject(response.toString());
+	JSONArray jsonArray = (JSONArray) jsonObject.get("result");
+	
+	for(int i=0; i<jsonArray.length(); i++){
+            JSONObject objek = (JSONObject) jsonArray.get(i);
+            result = (JSONObject) objek.get("map");
+            String status = result.getString("status");
+            if ( status.equals("sudah") ) {
+                Perwalian p = new Perwalian();
+                p.getMhs().setNama(result.getString("nama"));
+                p.getMhs().setNrp(result.getString("nrp"));
+                waliList.add(p);
+            }
+            
+        }	        
+		
+	return waliList;
+    }
+    
+    /* method untuk menampilkan daftar mahasiswa yang belum perwalian */
+    public List<Perwalian> getMhsNotPerwalian() throws Exception {
+        waliList = new ArrayList<>();
+	String url = "dosen/getMhsWali/dos01";
+	obj = new URL(BASE_URL + url);
+	HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+	connection.setRequestMethod("GET");
+	connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
+	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String inputLine;
+	StringBuffer response = new StringBuffer();
+	while ((inputLine = in.readLine()) != null ) {
+            response.append(inputLine);
+	}
+		
+	in.close();
+	JSONObject result;
+	JSONObject jsonObject = new JSONObject(response.toString());
+	JSONArray jsonArray = (JSONArray) jsonObject.get("result");
+	
+	for(int i=0; i<jsonArray.length(); i++){
+            JSONObject objek = (JSONObject) jsonArray.get(i);
+            result = (JSONObject) objek.get("map");
+            String status = result.getString("status");
+            if ( status.equals("belum") ) {
+                Perwalian p = new Perwalian();
+                p.getMhs().setNama(result.getString("nama"));
+                p.getMhs().setNrp(result.getString("nrp"));
+                waliList.add(p);
+            }
+            
+        }	        
+		
+	return waliList;
     }
 }
