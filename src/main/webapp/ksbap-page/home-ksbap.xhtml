@@ -13,7 +13,7 @@
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="style-perwalian.css" />
-        <title>Menu Pengisian KRS</title>
+        <title>Home KSBAP</title>
     </h:head>
     <h:body>
         <!-- header -->
@@ -32,7 +32,7 @@
              </b:navbarLinks>
          </b:navBar>
         
-        <b:container styleClass="col-lg-12" style="margin: auto; border: 1px black solid; padding: 3px;">
+<!--        <b:container styleClass="col-lg-12" style="margin: auto; border: 1px black solid; padding: 3px;">
             <h:outputText value="Unpas | " style="margin-right: 1%;" />
             <h:outputText value="Tahun Akademik : " />
             <h:selectOneMenu value="Pilih semester" style="margin-right: 1%;">
@@ -44,9 +44,9 @@
             <h:commandButton value="Cari" style="margin-right: 1%;"/>
             <h:outputText value="|" style="margin-right: 1%;" />
             <h:commandButton value="Reset" style="margin-right: 1%;" />
-        </b:container>
+        </b:container>-->
         
-        <b:container styleClass="col-lg-12" style="margin: auto; margin-top: 2%; border: 1px #000 groove; padding-top: 1%;">
+<!--        <b:container styleClass="col-lg-12" style="margin: auto; margin-top: 2%; border: 1px #000 groove; padding-top: 1%;">
             <b:container styleClass="col-lg-2">
                 <b:image alt="foto" name="foto"/>
             </b:container>
@@ -89,7 +89,7 @@
                     <h:outputText value="{xxx}"/>
                 </b:panelGrid>
             </b:container>
-        </b:container>
+        </b:container>-->
         
        <b:container styleClass="col-lg-12" style="margin: auto; margin-top: 3%;">
        <!-- sidebar -->
@@ -121,14 +121,15 @@
        
        <b:container styleClass="col-lg-8" style="float: right; margin: auto; margin-right: 5%;">
            <b:panel>
+               <b:label text="Daftar KRS dan PRS semester" />
            <b:container styleClass="col-lg-7" style="border: 1px black solid; width: 100%;">
-                <b:label text="Daftar KRS dan PRS semester" />
+                
                 <h:dataTable styleClass="col-lg-12" style="float: none; margin-top: 1%;">
                     <h:column>
                         <f:facet name="header">
                           <h:outputText value="No" />
                         </f:facet>
-                        <h:outputText value="NO" />
+                        <h:outputText value="" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -144,20 +145,35 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                          <h:outputText value="Status" />
+                          <h:outputText value="Kehadiran" />
                         </f:facet>
                         <h:inputText value="NO"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                          <h:outputText value="Jumlah SKS" />
+                          <h:outputText value="Kelas" />
                         </f:facet>
                         <h:inputText value="{SKS}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                          <h:outputText value="Tambahkan" />
+                          <h:outputText value="UTS" />
                         </f:facet>
+                        <h:inputText value="{SKS}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="Tugas/Quiz" />
+                        </f:facet>
+                        <h:inputText value="{SKS}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                          <h:outputText value="SKS" />
+                        </f:facet>
+                        <h:inputText value="{SKS}"/>
+                    </h:column>
+                    <h:column>
                         <h:form>
                             <b:commandButton value="add" look="info"/>
                         </h:form>
@@ -165,9 +181,9 @@
                 </h:dataTable> 
             </b:container>
             <b:container styleClass="col-lg-2" style="margin: auto; float: none;">
-                <h:form>
+<!--                <h:form>
                     <b:commandButton value="Kontrak" size="sm" style="margin-top: 3%;"/>
-                </h:form>                
+                </h:form>                -->
             </b:container>
             
             <b:container styleClass="col-lg-4" style="margin-top: 5%; width: 100%;">

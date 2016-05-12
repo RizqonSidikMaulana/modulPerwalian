@@ -18,7 +18,7 @@
     <h:body>
         <!-- header -->
         <b:navBar style="background-color: #ff9900; color: #fff;">
-            <div class="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
+            <div styleClass="col-xs-2" style="margin-top: 5px; margin-right: -3%;">
                 <img src="../img/unpas-header-small.png"/>
             </div>
             <b:navbarLinks>
@@ -42,7 +42,7 @@
 
 
 
-        <b:container class="col-lg-12" style="margin: auto; margin-top: 3%;">
+        <b:container styleClass="col-lg-12" style="margin: auto; margin-top: 3%;">
             <b:panel title="Sidebar" style="float: left; width: 25%;">
                 <b:listLinks>
                     <b:navLink header="Profil" />
@@ -69,7 +69,7 @@
 
             <!-- isi profile -->
             <b:panel style="padding: -1%; margin-left: 26%; width: 70%;">
-                <b:container class="col-md-6">
+                <b:container styleClass="col-md-6">
                     <b:label text="Belum disetujui"/>
                     <b:panel>                        
                         <b:dataTable value="#{dosenC.mhsHasPerwalian}" var="dos" id="mhsBelumDisetujui" styleClass="table table-striped table-bordered"
@@ -95,7 +95,7 @@
                     </b:panel>
                 </b:container>
 
-                <b:container class="col-md-6">
+                <b:container styleClass="col-md-6">
                     <b:label text="Sudah disetujui"/>
                     <b:panel>    
                         <b:dataTable value="#{dosenC.mhsNotPerwalian}" var="dos" id="mhsDisetujui" styleClass="table table-striped table-bordered"
