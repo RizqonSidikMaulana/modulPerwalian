@@ -25,8 +25,8 @@ public class DosenMain {
     
     private Dosen dosen;
     private Mahasiswa mhs;
-    private Perwalian p;
-    private String BASE_URL = "http://192.168.173.207:9090/Service/";
+    
+    private String BASE_URL = "http://192.168.173.128:9090/Service/";
     private List<Mahasiswa> mhsList;
     private List<Dosen> dosenList;
     private List<Perwalian> waliList;
@@ -50,23 +50,28 @@ public class DosenMain {
         JSONObject result;
         JSONObject jsonObject = new JSONObject(response.toString());
         JSONArray jsonArray = (JSONArray) jsonObject.get("result");
-
-        for (int i = 0; i < jsonArray.length(); i++) {
+//        
+//        if (jsonArray.isNull(0)) {
+//            waliList = null;
+//                    
+//        }
+//        else {
+            System.out.println(jsonArray.length());
+            for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.equals("sudah")) {
-                Perwalian p = new Perwalian();
-                p.getMhs().setNama(result.getString("nama"));
-                p.getMhs().setNrp(result.getString("nrp"));
-                waliList.add(p);
+//                
+            if (status.matches("sudah")) {
+                Perwalian ps = new Perwalian();
+                ps.getMhs().setNama(result.getString("nama"));
+                System.out.println(ps.getMhs().getNama());
+                ps.getMhs().setNrp(result.getString("nrp"));
+                waliList.add(ps);
             }
 
-        }
-        
-        if (waliList.isEmpty()) {
-            System.out.println("Kosong");
-        }
+        }  
+//        }
 
         return waliList;
     }
@@ -110,6 +115,10 @@ public class DosenMain {
         DosenMain dm = new DosenMain();
         if (dm.getMhsHasPerwalian().isEmpty()) {
             System.out.println("test");
+        }
+        
+        if (dm.getMhsNotPerwalian().isEmpty() ) {
+            System.out.println("testjj");
         }
     }
 }
