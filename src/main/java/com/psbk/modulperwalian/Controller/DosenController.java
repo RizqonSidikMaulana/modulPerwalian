@@ -61,25 +61,25 @@ public class DosenController {
             throw new RuntimeException("Failed : HTTP error code : "
                     + conn.getResponseCode());
         }
-        
+
         BufferedReader br = new BufferedReader(new InputStreamReader(
-					(conn.getInputStream())));
+                (conn.getInputStream())));
 
-			String output;
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
+        String output;
+        System.out.println("Output from Server .... \n");
+        while ((output = br.readLine()) != null) {
 
-				nip = output;
-			}
+            nip = output;
+        }
 
-
+        
         return output;
     }
 
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
-	String url = "dosen/getDosen/dos01";
+        String url = "dosen/getDosen/dos01";
         obj = new URL(BASE_URL + url);
 //        String data = String.format("param1=%s", URLEncoder.encode(url, url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
@@ -187,7 +187,8 @@ public class DosenController {
     }
 
     /* method untuk mengambil detail krs mahasiswa wali */
-    public void getDetailKrs() throws Exception {
+    public List<Perwalian> getDetailKrs() throws Exception {
+        waliList = new ArrayList<>();
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
         String nrp = request.getParameter("nrp");
@@ -208,14 +209,19 @@ public class DosenController {
         JSONObject result;
         JSONObject jsonObject = new JSONObject(response.toString());
         result = (JSONObject) jsonObject.get("result");
-        result = (JSONObject) result.get("map");
-        p.getMhs().setNrp(result.getString("nrp"));
-        p.getMk().setKode(result.getString("kode_mk"));
-        p.setStatus(result.getString("status"));
-        p.getMk().setSks(result.getInt("sks"));
+        JSONArray jsonArray = (JSONArray) jsonObject.get("result");
 
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject objek = (JSONObject) jsonArray.get(i);
+            result = (JSONObject) objek.get("map");
+            p.getMhs().setNrp(result.getString("nrp"));
+            p.getMk().setKode(result.getString("kode_mk"));
+            p.setStatus(result.getString("status"));
+            p.getMk().setSks(result.getInt("sks"));
+            waliList.add(p);
+        }
+        return waliList;
     }
-
 //    public Perwalian getDetailPerwalian() throws Exception {
 //        String url = "mhsByNrp/02";
 //	obj = new URL(url);
@@ -271,7 +277,7 @@ public class DosenController {
             }
 
         }
-        
+
         if (waliList.isEmpty()) {
             System.out.println("Kosong");
         }

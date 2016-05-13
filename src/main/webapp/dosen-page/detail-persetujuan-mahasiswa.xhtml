@@ -64,7 +64,7 @@
                   <b:container styleClass="col-lg-8" style="float: left; margin: auto; margin-left: 15%;">
                         <b:panel>
                         <b:label text="Daftar KRS dan PRS" />
-                        <h:dataTable value="" var="dos" id="daftarMhs" styleClass="table table-striped table-bordered">
+                        <h:dataTable value="#{dosenC.detailKrs}" var="dos" id="daftarMhs" styleClass="table table-striped table-bordered">
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="No" />
@@ -75,13 +75,13 @@
                                     <f:facet name="header">
                                         <h:outputText value="NRP" />
                                     </f:facet>
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{dos.nrp}" />
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
                                         <h:outputText value="Kode MK" />
                                     </f:facet>
-                                    <h:outputText value=""/>                                
+                                    <h:outputText value="#{dos.kode_mk}"/>                                
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
@@ -93,7 +93,7 @@
                                     <f:facet name="header">
                                         <h:outputText value="Status" />
                                     </f:facet>
-                                    <h:outputText value=""/>                                
+                                    <h:outputText value="#"/>                                
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">
@@ -126,7 +126,7 @@
                    <b:container styleClass="col-lg-6" style="margin-top: 5%; margin-left: 23%;">
                         <b:label text="Berita Acara" />
                         <b:inputTextarea rows="4"/>
-                        <h:form class="col-md-8" style="margin-left: 30%;">
+                        <h:form styleClass="col-md-8" style="margin-left: 30%;">
                             <b:commandButton value="Ubah" size="sm" look="primary" style="width: 27%; margin-right: 2%;"/>
                             <b:commandButton value="Simpan" size="sm" look="primary" style="width: 27%; margin-left: 4%;"/>
                         </h:form>
