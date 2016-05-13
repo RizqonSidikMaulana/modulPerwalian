@@ -30,16 +30,17 @@ import org.codehaus.jettison.json.JSONObject;
  * @author dilacim
  */
 @ManagedBean(name = "dosenC")
-public class DosenController {
+public class DosenController extends BaseUrl {
 
     private Dosen dosen;
     private Mahasiswa mhs;
     private Perwalian p;
-    private String BASE_URL = "http://192.168.173.207:9090/Service/";
+    private String BASE_URL = getIp();
     private List<Mahasiswa> mhsList;
     private List<Dosen> dosenList;
     private List<Perwalian> waliList;
     private URL obj;
+    
 
     /* method POST ambil data dosen */
     public String getDataDosenTest() throws Exception {
