@@ -53,7 +53,7 @@
                 <b:navLink header="Menu Perwalian"/>
                 <b:navLink href="daftar-mahasiswa.xhtml" value="Daftar Mahasiswa"
                            icon="list-alt" iconAlign="right"/>
-                <b:navLink href="#" value="Perwalian    "
+                <b:navLink href="perwalian-dosen.xhtml" value="Perwalian"
                            icon="edit" iconAlign="right"/>
                 <b:navLink><hr></hr></b:navLink>
                 <b:navLink header="Menu Perkuliahan"/>
@@ -72,16 +72,16 @@
                     <b:panelGrid colSpans="4,1,7">
                         <h:outputLabel value="Nama Lengkap" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosenTest.nama}"/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.nama}"/>
                         <h:outputLabel value="Tempat Tgl Lahir" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value="#"/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.tgl}"/>
                         <h:outputLabel value="No Telp" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value=""/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.telp}"/>
                         <h:outputLabel value="Email" />
                         <h:outputLabel value=" : " />
-                        <h:outputText class="col-xs-5" value=""/>
+                        <h:outputText class="col-xs-5" value="#{dosenC.dataDosen.email}"/>
                     </b:panelGrid>   
                 <hr></hr>
                 <b:panelGrid colSpans="5,1,6">

@@ -13,8 +13,18 @@ import java.util.Date;
  */
 public class Dosen {
     
-    private String idDosen, nama, email, alamat;
+    private String idDosen, nama, email, alamat, telp;
     private String tgl;
+
+    public String getTelp() {
+        return telp;
+    }
+
+    public void setTelp(String telp) {
+        this.telp = telp;
+    }
+    
+    
 
     public String getTgl() {
         return tgl;

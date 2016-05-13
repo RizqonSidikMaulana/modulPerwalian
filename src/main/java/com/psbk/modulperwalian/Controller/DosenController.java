@@ -77,10 +77,9 @@ public class DosenController {
     }
 
     /* method untuk mengambil data pribadi dosen */
-    public Dosen getDataDosen(String nip) throws Exception {
+    public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
-//	String url = "dosen/getDosen/dos01";
-        String url = "dosen/getDosen/"+nip;
+	String url = "dosen/getDosen/dos01";
         obj = new URL(BASE_URL + url);
 //        String data = String.format("param1=%s", URLEncoder.encode(url, url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
@@ -116,6 +115,7 @@ public class DosenController {
         dosen.setIdDosen(result.getString("id_dosen"));
         dosen.setNama(result.getString("nama_dosen"));
         dosen.setTgl(result.getString("tglLahir"));
+        dosen.setTelp(result.getString("noTelp"));
 
         return dosen;
     }
