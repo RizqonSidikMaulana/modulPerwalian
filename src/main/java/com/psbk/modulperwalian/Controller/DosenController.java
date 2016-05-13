@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
@@ -270,7 +271,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.equals("sudah")) {
+            if (status.matches("sudah")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
@@ -310,7 +311,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.equals("belum")) {
+            if (status.matches("belum")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
