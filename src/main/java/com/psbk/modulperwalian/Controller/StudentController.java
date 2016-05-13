@@ -24,7 +24,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 @ManagedBean(name="mahasiswa")
 public class StudentController {
-    private String BASE_URL = "http://192.168.173.246:9090/Service/mahasiswa/";
+    private String BASE_URL = "http://192.168.173.207:9090/Service/mahasiswa/";
     private Mahasiswa s;
 	private List<Mahasiswa> listStudents;
 
