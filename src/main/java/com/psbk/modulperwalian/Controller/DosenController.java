@@ -157,7 +157,7 @@ public class DosenController {
     /* method untuk mengambil daftar anak wali testing using post*/
     public List<Mahasiswa> getListMahasiswa() throws Exception {
         mhsList = new ArrayList<>();
-        String url = "dosen/x/dos01";
+        String url = "dosen/getMhsWali/dos01";
         obj = new URL(BASE_URL + url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
@@ -270,6 +270,10 @@ public class DosenController {
                 waliList.add(p);
             }
 
+        }
+        
+        if (waliList.isEmpty()) {
+            System.out.println("Kosong");
         }
 
         return waliList;
