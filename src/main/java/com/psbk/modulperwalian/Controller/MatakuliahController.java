@@ -26,7 +26,7 @@ import org.codehaus.jettison.json.JSONObject;
 @ManagedBean(name="matkul")
 public class MatakuliahController {
     private MataKuliah mk;
-    private String BASE_URL = "http://192.168.173.246:9090/Service/matakuliah";
+    private String BASE_URL = "http://192.168.173.207:9090/Service/matakuliah";
     private List<MataKuliah> mkList;
 
     public void setMk(MataKuliah mk) {
