@@ -75,7 +75,7 @@
                     </b:container>
                     <b:container styleClass="col-lg-4" style="float: left; margin-right: 5%;">
                         <b:panelGrid colSpans="10,2">
-                            <h:outputLabel value="133040000"/>
+                            <h:outputLabel value="#{mahasiswa.dataMhs.nrp}"/>
                             <h:outputText value=""/>
                             <h:outputText value="Nama Lengkap"/>
                             <h:outputText value=" : "/>
@@ -91,11 +91,13 @@
                         <b:panelGrid colSpans="12">
                             <h:outputLabel value="Anggota"/>
                             <h:outputText value=""/>
+                            <h:outputText value="#{mahasiswa.dataMhs.nama}"/>
+                            <h:outputText value=""/>
+                            <h:outputText value="#{mahasiswa.dataMhs.noTelp}"/>
                             <h:outputText value=""/>
                             <h:outputText value=""/>
                             <h:outputText value=""/>
-                            <h:outputText value=""/>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{mahasiswa.dataMhs.email}"/>                            
                         </b:panelGrid>
                     </b:container>
                 </b:container>

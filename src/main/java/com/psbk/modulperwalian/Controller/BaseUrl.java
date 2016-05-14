@@ -10,7 +10,7 @@ package com.psbk.modulperwalian.Controller;
  * @author RIZQON SIDIK MAULANA
  */
 public class BaseUrl  {
-    private static final String ip = "http://192.168.173.128:9090/Service/";
+    private static final String ip = "http://192.168.173.207:9090/Service/";
 
     public static String getIp() {
         return ip;

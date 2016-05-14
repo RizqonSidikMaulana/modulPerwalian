@@ -27,9 +27,9 @@ import org.codehaus.jettison.json.JSONObject;
  */
 
 @ManagedBean (name = "login")
-@ViewScoped
 public class ControllerLogin extends BaseUrl {
-    private String username, password;
+    private String password;
+    private String username;
 
     public String getUsername() {
         return username;
@@ -37,7 +37,8 @@ public class ControllerLogin extends BaseUrl {
 
     public void setUsername(String username) {
         this.username = username;
-    }
+    }           
+
 
     public String getPassword() {
         return password;

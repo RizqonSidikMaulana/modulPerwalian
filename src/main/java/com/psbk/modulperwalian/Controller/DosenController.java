@@ -222,15 +222,14 @@ public class DosenController extends BaseUrl {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
         String nrp = request.getParameter("nrp");
-        String url = "mahasiswa/mhsByNrp/" + nrp;
-        obj = new URL(url);
+        String url = "mahasiswa/detailKontrakMk/01";
+        obj = new URL(BASE_URL + url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
         connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
-
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
@@ -238,17 +237,18 @@ public class DosenController extends BaseUrl {
         in.close();
         JSONObject result;
         JSONObject jsonObject = new JSONObject(response.toString());
-        result = (JSONObject) jsonObject.get("result");
         JSONArray jsonArray = (JSONArray) jsonObject.get("result");
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
+            Perwalian p = new Perwalian();
+            p.getMhs().setNama(result.getString("nama"));
             p.getMhs().setNrp(result.getString("nrp"));
             p.getMk().setKode(result.getString("kode_mk"));
-            p.setStatus(result.getString("status"));
-            p.getMk().setSks(result.getInt("sks"));
+            
             waliList.add(p);
+
         }
         return waliList;
     }
@@ -300,7 +300,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.matches("terima")) {
+            if (status.equals("terima")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
@@ -340,7 +340,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.matches("tunda")) {
+            if (status.matches("Tunda")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
