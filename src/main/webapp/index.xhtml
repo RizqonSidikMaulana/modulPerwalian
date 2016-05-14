@@ -22,7 +22,7 @@
 			<h:outputText value="Username :" />
                     </b:column>
                     <b:column>
-                        <b:inputText placeholder="Username" value="#{login.name}"/>
+                        <b:inputText placeholder="Username" value="#{login.username}"/>
                     </b:column>
 		</b:row>
 		<b:row>
@@ -38,7 +38,9 @@
 		      <b:commandButton value="reset" look="danger" style="width:100%" />
 		    </b:column>
                     <b:column span="3" colMd="4">
-                        <b:commandButton action="#{login.validateUsernamePassword()}" value="login" look="primary" style="width:100%" />
+                        <b:commandButton action="#{login.validateUsernamePassword()}" value="login" look="primary" style="width:100%">
+                            <f:param name="user" value="#{login.username}"/>
+                        </b:commandButton>
 		    </b:column>
                       
 		</b:row>

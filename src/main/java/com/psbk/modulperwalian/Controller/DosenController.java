@@ -116,8 +116,13 @@ public class DosenController extends BaseUrl {
 
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+        String nrp = request.getParameter("user");
+//        System.out.println(nrp);
         mhsList = new ArrayList<>();
-        String url = "dosen/getDosen/dos01";
+        String url = "dosen/getDosen/dos02";
         obj = new URL(BASE_URL + url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
@@ -146,7 +151,7 @@ public class DosenController extends BaseUrl {
 
     /* method untuk mengambil daftar anak didik per wali*/
     public List<Mahasiswa> getMhsPerwalian() throws Exception {
-
+        
         mhsList = new ArrayList<>();
         String url = "dosen/x/dos01";
         obj = new URL(BASE_URL + url);
@@ -181,6 +186,7 @@ public class DosenController extends BaseUrl {
     /* method untuk mengambil daftar anak wali testing using post*/
     public List<Mahasiswa> getListMahasiswa() throws Exception {
         mhsList = new ArrayList<>();
+        
         String url = "dosen/getMhsWali/dos01";
         obj = new URL(BASE_URL + url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
