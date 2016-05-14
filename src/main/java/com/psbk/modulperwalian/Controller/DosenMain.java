@@ -14,6 +14,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -26,7 +33,7 @@ public class DosenMain {
     private Dosen dosen;
     private Mahasiswa mhs;
     
-    private String BASE_URL = "http://192.168.173.128:9090/Service/";
+    private String BASE_URL = "http://192.168.173.207:9090/Service/";
     private List<Mahasiswa> mhsList;
     private List<Dosen> dosenList;
     private List<Perwalian> waliList;
@@ -111,6 +118,38 @@ public class DosenMain {
 
         return waliList;
     }
+    
+    public Dosen getPostDosen() throws Exception {
+        HttpClient httpClient = HttpClientBuilder.create().build(); //Use this instead 
+        String responseString = null;
+        Dosen dosen = new Dosen();
+        try {
+            String url = BASE_URL + "dosen/apa/";
+            HttpPost request = new HttpPost(url);
+            StringEntity params =new StringEntity("{request:{\"id_dosen\":\"dos01\"} }");
+            request.addHeader("content-type", "application/json");
+            request.setEntity(params);
+            
+            HttpResponse response = httpClient.execute(request);
+            HttpEntity entity = response.getEntity();
+            responseString = EntityUtils.toString(entity, "UTF-8");
+            JSONObject result;
+            JSONObject jsonObject = new JSONObject(responseString);
+            result = (JSONObject) jsonObject.get("result");
+            result = (JSONObject) result.get("map");
+            
+            dosen.setIdDosen(result.getString("id_dosen"));
+            dosen.setNama(result.getString("nama_dosen"));
+            dosen.setTgl(result.getString("tglLahir"));
+            dosen.setTelp(result.getString("noTelp"));
+        }catch (Exception ex) {
+            // handle exception here
+        }
+        
+        return dosen;
+    }
+    
+    
     public static void main(String[] args) throws Exception {
         DosenMain dm = new DosenMain();
         if (dm.getMhsHasPerwalian().isEmpty()) {
@@ -120,5 +159,7 @@ public class DosenMain {
         if (dm.getMhsNotPerwalian().isEmpty() ) {
             System.out.println("testjj");
         }
+        
+        System.out.println(dm.getPostDosen().getNama());
     }
 }

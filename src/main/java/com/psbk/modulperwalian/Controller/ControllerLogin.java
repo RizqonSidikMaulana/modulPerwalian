@@ -16,52 +16,26 @@ import javax.faces.context.FacesContext;
  * @author dilacim
  */
 
-@ManagedBean (name = "login", eager = true)
+@ManagedBean (name = "login")
 public class ControllerLogin {
-    private String name;
-    private String password;
-
-
-    public String getName ()
-    {
-        return name;
-    }
-
-
-    public void setName (String name)
-    {
-        this.name = name;
-    }
-
-
-    public String getPassword ()
-    {
-        return password;
-    }
-
-
-    public void setPassword (String password)
-    {
-        this.password = password;
-    }
     
     public void validateUsernamePassword() {
-    	System.out.println(getPassword());
-    	
-        if ( getName().matches("admin") && getPassword().matches("12345")) {
-        	FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Login Sukses",
-                            "Welcome Admin"));
-        }
-        else {
-        	FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                            "Username atau password salah",
-                            "Password atau Username Salah"));
-        }
+//    	System.out.println(getPassword());
+//    	
+//        if ( getName().matches("admin") && getPassword().matches("12345")) {
+//        	FacesContext.getCurrentInstance().addMessage(
+//                    null,
+//                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+//                            "Login Sukses",
+//                            "Welcome Admin"));
+//        }
+//        else {
+//        	FacesContext.getCurrentInstance().addMessage(
+//                    null,
+//                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+//                            "Username atau password salah",
+//                            "Password atau Username Salah"));
+//        }
     }
     
 }

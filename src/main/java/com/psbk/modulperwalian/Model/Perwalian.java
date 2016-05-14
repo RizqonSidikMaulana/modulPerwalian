@@ -5,10 +5,13 @@
  */
 package com.psbk.modulperwalian.Model;
 
+import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author dilacim
  */
+@ManagedBean(name="perwalian")
 public class Perwalian {
     
     private String semester, status;
@@ -64,6 +67,15 @@ public class Perwalian {
 
     public void setDosen(Dosen dosen) {
         this.dosen = dosen;
+    }
+    
+    public String getCurrentStatus() {
+        if ("".equals(status) || status == null ) {
+            return "";            
+        }
+        else {
+            return "tunda";
+        }
     }
     
     

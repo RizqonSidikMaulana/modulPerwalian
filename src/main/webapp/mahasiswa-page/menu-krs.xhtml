@@ -122,6 +122,7 @@
        <b:container styleClass="col-lg-8" style="float: right; margin: auto; margin-right: 5%;">
            <b:panel>
            <b:container styleClass="col-lg-7" style="border: 1px black solid; width: 100%;">
+               <h:form id="tbl-mk">
                 <b:label text="Daftar KRS dan PRS semester" />
                 <h:dataTable styleClass="col-lg-12" value="#{matkul.listMataKuliah}" var="mk" style="float: none; margin-top: 1%;">
                     <h:column>
@@ -144,25 +145,22 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                          <h:outputText value="Status" />
-                        </f:facet>
-                        <h:inputText value="NO"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
                           <h:outputText value="Jumlah SKS" />
                         </f:facet>
                         <h:inputText value="#{mk.sks}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                          <h:outputText value="Tambahkan" />
+                            <h:outputText value="Tambahkan"/>
                         </f:facet>
                         <h:form>
-                            <b:commandButton value="add" look="info"/>
+                            <b:commandButton id="add" value="add" look="info">
+                                <f:ajax execute="add" render=":tbl-mk"/>
+                            </b:commandButton>
                         </h:form>
                     </h:column>
                 </h:dataTable> 
+               </h:form>
             </b:container>
             <b:container styleClass="col-lg-2" style="margin: auto; float: none;">
                 <h:form>

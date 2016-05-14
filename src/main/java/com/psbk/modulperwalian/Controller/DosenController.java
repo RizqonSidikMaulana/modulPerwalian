@@ -20,11 +20,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
 /**
  *
@@ -41,8 +49,6 @@ public class DosenController extends BaseUrl {
     private List<Dosen> dosenList;
     private List<Perwalian> waliList;
     private URL obj;
-    
-
     /* method POST ambil data dosen */
     public String getDataDosenTest() throws Exception {
         String nip = null;
@@ -77,31 +83,47 @@ public class DosenController extends BaseUrl {
         
         return output;
     }
+    
+//    public Dosen getPostDosen() throws Exception {
+//        HttpClient httpClient = HttpClientBuilder.create().build(); //Use this instead 
+//        String responseString = null;
+//        Dosen dosen = new Dosen();
+//        try {
+//            String url = BASE_URL + "dosen/apa/";
+//            HttpPost request = new HttpPost(url);
+//            StringEntity params =new StringEntity("{request:{\"id_dosen\":\"dos01\"} }");
+//            request.addHeader("content-type", "application/json");
+//            request.setEntity(params);
+//            
+//            HttpResponse response = httpClient.execute(request);
+//            HttpEntity entity = response.getEntity();
+//            responseString = EntityUtils.toString(entity, "UTF-8");
+//            JSONObject result;
+//            JSONObject jsonObject = new JSONObject(responseString);
+//            result = (JSONObject) jsonObject.get("result");
+//            result = (JSONObject) result.get("map");
+//            
+//            dosen.setIdDosen(result.getString("id_dosen"));
+//            dosen.setNama(result.getString("nama_dosen"));
+//            dosen.setTgl(result.getString("tglLahir"));
+//            dosen.setTelp(result.getString("noTelp"));
+//        }catch (Exception ex) {
+//            // handle exception here
+//        }
+//        
+//        return dosen;
+//    }
 
     /* method untuk mengambil data pribadi dosen */
     public Dosen getDataDosen() throws Exception {
         mhsList = new ArrayList<>();
         String url = "dosen/getDosen/dos01";
         obj = new URL(BASE_URL + url);
-//        String data = String.format("param1=%s", URLEncoder.encode(url, url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
-//        connection.setDoOutput(true);
-//        connection.setDoInput(true);
-//        connection.setUseCaches(false);
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Content-Type", "application/json");
         connection.addRequestProperty("Authorization", "Basic YWRtaW46YWRtaW4=");
-        //Send request
-
-//        OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
-//        JSONObject param = new JSONObject();
-//        param.put("id_dosen", "dos01");
-//        
-//        param.write(wr);
-//        wr.write(URLEncoder.encode(param.toString(),"UTF-8"));
-//        wr.flush();         
-//	wr.close();
-//        
+        
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
@@ -247,6 +269,7 @@ public class DosenController extends BaseUrl {
 //	
 //        return p;
 //    }
+    
     /* method untuk menampilkan daftar mahasiswa yang sudah perwalian */
     public List<Perwalian> getMhsHasPerwalian() throws Exception {
         waliList = new ArrayList<>();
@@ -271,7 +294,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.matches("sudah")) {
+            if (status.matches("terima")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
@@ -311,7 +334,7 @@ public class DosenController extends BaseUrl {
             JSONObject objek = (JSONObject) jsonArray.get(i);
             result = (JSONObject) objek.get("map");
             String status = result.getString("status");
-            if (status.matches("belum")) {
+            if (status.matches("tunda")) {
                 Perwalian p = new Perwalian();
                 p.getMhs().setNama(result.getString("nama"));
                 p.getMhs().setNrp(result.getString("nrp"));
